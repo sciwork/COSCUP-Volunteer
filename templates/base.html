@@ -10,23 +10,23 @@
     {%block linkstyle%}{%endblock%}
     <link href="/css/bulma.min.css" rel="stylesheet" />
     <link href="/faw/css/all.min.css" rel="stylesheet" />
-    <title>{%block head_title%}{%endblock%} | COSCUP Volunteer</title>
+    <title>{%block head_title%}{%endblock%} | sciwork Volunteer</title>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@coscup" />
     {%block og%}
     <meta
       property="og:title"
-      content="{%block og_title%}{%endblock%}Volunteer with COSCUP! 志工服務系統"
+      content="{%block og_title%}{%endblock%}Volunteer with sciwork! 志工服務系統"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="COSCUP Volunteer" />
+    <meta property="og:site_name" content="sciwork Volunteer" />
     <meta
       property="og:image"
       content="https://volunteer.coscup.org/img/volunteer_og.png"
     />
     <meta
       property="og:description"
-      content="志工招募、完成志工成員登錄、各屆組織建立、住宿、交通費補助等行政事宜。Volunteer with COSCUP!"
+      content="志工招募、完成志工成員登錄、各屆組織建立、住宿、交通費補助等行政事宜。Volunteer with sciwork!"
     />
     {%endblock%}
     <meta name="theme-color" content="#48c78e" />
@@ -47,21 +47,24 @@
   </head>
   <body>
     <nav
-      class="navbar is-success"
+      class="navbar is-bg-sciwork"
       role="navigation"
       aria-label="main navigation"
     >
       <div class="navbar-brand">
-        <a class="navbar-item is-active has-text-weight-semibold" href="/">
+        <a
+          class="navbar-item is-font-sciwork is-active has-text-weight-semibold"
+          href="/"
+        >
           <img
-            src="/img/coscup_volunteer_og.png"
+            src="/img/sciwork-192X192.png"
             style="
               margin-right: 5px;
               box-shadow: white 0px 0px 10px;
               border-radius: 25px;
             "
           />
-          COSCUP Volunteer
+          sciwork volunteer
         </a>
 
         <a
@@ -92,30 +95,30 @@
             </a>
             <div class="navbar-dropdown">
               <a
-                class="navbar-item has-text-weight-medium"
+                class="navbar-item has-text-weight-medium is-font-sciwork"
                 href="/project/2024/"
               >
                 <span class="icon"><i class="far fa-bookmark"></i></span>
-                <span>COSCUP 2024</span>
+                <span>sciwork 2024</span>
               </a>
-              <a class="navbar-item has-text-weight-medium" href="/tasks/2024">
+              <a class="navbar-item has-text-weight-medium is-font-sciwork" href="/tasks/2024">
                 <span class="icon"><i class="fas fa-pizza-slice"></i></span>
                 <span>2024 解任務！</span>
               </a>
             </div>
           </div>
           {% else %}
-          <a class="navbar-item has-text-weight-medium" href="/tasks/2024">
+          <a class="navbar-item has-text-weight-medium is-font-sciwork" href="/tasks/2024">
             <span class="icon"><i class="fas fa-pizza-slice"></i></span>
             <span>2024 解任務！</span>
           </a>
-          <a class="navbar-item has-text-weight-medium" href="/project/2024/">
+          <a class="navbar-item has-text-weight-medium is-font-sciwork" href="/project/2024/">
             <span class="icon"><i class="far fa-bookmark"></i></span>
-            <span>COSCUP 2024</span>
+            <span>sciwork 2024</span>
           </a>
           {% endif %}
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link has-text-weight-medium" href="">
+            <a class="navbar-link has-text-weight-medium is-font-sciwork" href="">
               <span class="icon"><i class="fas fa-book"></i></span>
               <span>引導手冊</span>
             </a>
@@ -126,7 +129,7 @@
                 href="/docs/zh-TW/about_coscup/how_to_participate/"
               >
                 <span class="icon"><i class="fas fa-book"></i></span>
-                <span>如何參與 COSCUP</span>
+                <span>如何參與 sciwork</span>
               </a>
               <a
                 class="navbar-item has-text-weight-medium"
@@ -146,7 +149,7 @@
               </a>
             </div>
           </div>
-          <a class="navbar-item has-text-weight-medium" href="/schedule/2023">
+          <a class="navbar-item has-text-weight-medium is-font-sciwork" href="/schedule/2023">
             <span class="icon"><i class="fas fa-hands-helping"></i></span>
             <span>2023 議程表 | 社群協助</span>
           </a>
@@ -368,7 +371,7 @@
         <div class="columns">
           <div class="column"></div>
           <div class="column is-two-thirds">
-            <p>COSCUP Volunteer 志工服務系統 | 行政組 建構</p>
+            <p>sciwork Volunteer 志工服務系統 | 行政組 建構</p>
             <hr style="border: 3px solid #e1e1e1; border-radius: 3px" />
             <p>
               <span class="icon"><i class="fas fa-rocket"></i></span>
@@ -379,6 +382,14 @@
         </div>
       </div>
     </footer>
+    <style>
+      .is-bg-sciwork {
+        background-color: #222;
+      }
+      .is-font-sciwork {
+        color: white !important;
+      }
+    </style>
     <!-- Cloudflare Web Analytics -->
     <script
       defer

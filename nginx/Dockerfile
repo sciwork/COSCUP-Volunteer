@@ -20,6 +20,8 @@ RUN set -x ; \
 
 RUN mkdir cdnhost
 RUN curl -L -0 volunteer.coscup.org/img/coscup_volunteer_og.png > /cdnhost/coscup_volunteer_og.png;
+RUN curl -L -0 sciwork.dev/theme/images/android-chrome-192x192.png > /cdnhost/sciwork-192X192.png
+RUN curl -L -0 live.staticflickr.com/65535/53398239117_218254047e_o_d.jpg > /cdnhost/sciwork-conf2023.jpg
 
 RUN curl -L -0 volunteer.coscup.org/favicon.ico > /cdnhost/favicon.ico;
 RUN curl -L -0 volunteer.coscup.org/css/bulma.min.css > /cdnhost/bulma.min.css;
