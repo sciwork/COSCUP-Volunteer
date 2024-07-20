@@ -21,76 +21,76 @@ services:
     networks:
       - backend
 
-  workerapp:
-    image: "coscupweb-base:24.04.25"
-    links:
-      - "memcached-prod:memcached"
-      - "queue_sender:rabbitmq"
-      - "secretary_mongo:mongo"
-    volumes:
-      - $PWD/logs/apps:/var/log/apps
-      - $PWD/scripts:/app/scripts
-      - $PWD/main.py:/app/main.py
-      - $PWD/uwsgi.ini:/app/uwsgi.ini
-      - $PWD/setting.py:/app/setting.py
-      - $PWD/cmdtools:/app/cmdtools
-      - $PWD/celery_task:/app/celery_task
-      - $PWD/models:/app/models
-      - $PWD/module:/app/module
-      - $PWD/templates:/app/templates
-      - $PWD/view:/app/view
-      - $PWD/structs:/app/structs
-      - $PWD/api:/app/api
-      - $PWD/docs_dev:/app/docs_dev
-    depends_on:
-      - memcached-prod
-      - queue_sender
-      - secretary_mongo
-    networks:
-      - backend
-    environment:
-      - PYTHONPATH=/app
-      - CLIENT_ID=${CLIENT_ID}
-      - CLIENT_SECRET=${CLIENT_SECRET}
-    command: sh
+  # workerapp:
+  #   image: "coscupweb-base:24.04.25"
+  #   links:
+  #     # - "memcached-prod:memcached"
+  #     # - "queue_sender:rabbitmq"
+  #     - "secretary_mongo:mongo"
+  #   volumes:
+  #     - $PWD/logs/apps:/var/log/apps
+  #     - $PWD/scripts:/app/scripts
+  #     - $PWD/main.py:/app/main.py
+  #     - $PWD/uwsgi.ini:/app/uwsgi.ini
+  #     - $PWD/setting.py:/app/setting.py
+  #     - $PWD/cmdtools:/app/cmdtools
+  #     - $PWD/celery_task:/app/celery_task
+  #     - $PWD/models:/app/models
+  #     - $PWD/module:/app/module
+  #     - $PWD/templates:/app/templates
+  #     - $PWD/view:/app/view
+  #     - $PWD/structs:/app/structs
+  #     - $PWD/api:/app/api
+  #     - $PWD/docs_dev:/app/docs_dev
+  #   depends_on:
+  #     # - memcached-prod
+  #     # - queue_sender
+  #     - secretary_mongo
+  #   networks:
+  #     - backend
+  #   environment:
+  #     - PYTHONPATH=/app
+  #     - CLIENT_ID=${CLIENT_ID}
+  #     - CLIENT_SECRET=${CLIENT_SECRET}
+  #   command: sh
 
-  cmdapp:
-    image: "coscupweb-base:24.04.25"
-    links:
-      - "memcached-prod:memcached"
-      - "queue_sender:rabbitmq"
-      - "secretary_mongo:mongo"
-    volumes:
-      - $PWD/logs/apps:/var/log/apps
-      - $PWD/main.py:/app/main.py
-      - $PWD/uwsgi.ini:/app/uwsgi.ini
-      - $PWD/setting.py:/app/setting.py
-      - $PWD/cmdtools:/app/cmdtools
-      - $PWD/celery_task:/app/celery_task
-      - $PWD/models:/app/models
-      - $PWD/module:/app/module
-      - $PWD/templates:/app/templates
-      - $PWD/view:/app/view
-      - $PWD/structs:/app/structs
-      - $PWD/api:/app/api
-      - $PWD/docs_dev:/app/docs_dev
-    depends_on:
-      - memcached-prod
-      - queue_sender
-      - secretary_mongo
-    environment:
-      - PYTHONPATH=/app
-      - CLIENT_ID=${CLIENT_ID}
-      - CLIENT_SECRET=${CLIENT_SECRET}
-    networks:
-      - backend
-    entrypoint: ["poetry", "run", "python3", "cmdtools/main.py"]
+  # cmdapp:
+  #   image: "coscupweb-base:24.04.25"
+  #   links:
+  #     # - "memcached-prod:memcached"
+  #     # - "queue_sender:rabbitmq"
+  #     - "secretary_mongo:mongo"
+  #   volumes:
+  #     # - $PWD/logs/apps:/var/log/apps
+  #     # - $PWD/main.py:/app/main.py
+  #     # - $PWD/uwsgi.ini:/app/uwsgi.ini
+  #     # - $PWD/setting.py:/app/setting.py
+  #     # - $PWD/cmdtools:/app/cmdtools
+  #     # - $PWD/celery_task:/app/celery_task
+  #     # - $PWD/models:/app/models
+  #     # - $PWD/module:/app/module
+  #     # - $PWD/templates:/app/templates
+  #     # - $PWD/view:/app/view
+  #     # - $PWD/structs:/app/structs
+  #     - $PWD/api:/app/api
+  #     # - $PWD/docs_dev:/app/docs_dev
+  #   depends_on:
+  #     # - memcached-prod
+  #     # - queue_sender
+  #     - secretary_mongo
+  #   environment:
+  #     - PYTHONPATH=/app
+  #     - CLIENT_ID=${CLIENT_ID}
+  #     - CLIENT_SECRET=${CLIENT_SECRET}
+  #   networks:
+  #     - backend
+  #   entrypoint: ["poetry", "run", "python3", "cmdtools/main.py"]
 
   webapp:
     image: "coscupweb-base:24.04.25"
     links:
-      - "memcached-prod:memcached"
-      - "queue_sender:rabbitmq"
+      # - "memcached-prod:memcached"
+      # - "queue_sender:rabbitmq"
       - "secretary_mongo:mongo"
     ports:
       - "5000:5000"
@@ -108,8 +108,8 @@ services:
       - $PWD/static:/app/static
       - $PWD/structs:/app/structs
     depends_on:
-      - memcached-prod
-      - queue_sender
+      # - memcached-prod
+      # - queue_sender
       - secretary_mongo
     environment:
       - CLIENT_ID=${CLIENT_ID}
@@ -136,8 +136,8 @@ services:
   apiapp:
     image: "coscupweb-base:24.04.25"
     links:
-      - "memcached-prod:memcached"
-      - "queue_sender:rabbitmq"
+      # - "memcached-prod:memcached"
+      # - "queue_sender:rabbitmq"
       - "secretary_mongo:mongo"
     volumes:
       - $PWD/logs/apps:/var/log/apps
@@ -153,8 +153,8 @@ services:
       - $PWD/structs:/app/structs
       - $PWD/api:/app/api
     depends_on:
-      - memcached-prod
-      - queue_sender
+      # - memcached-prod
+      # - queue_sender
       - secretary_mongo
     expose:
       - "8000"
@@ -169,106 +169,106 @@ services:
       - backend
     entrypoint: ["poetry", "run", "uvicorn", "api.main:app", "--reload"]
 
-  celery_worker:
-    image: "coscupweb-base:24.04.25"
-    links:
-      - "queue_sender:rabbitmq"
-      - "secretary_mongo:mongo"
-    volumes:
-      - $PWD/logs/workers:/var/log/workers
-      - $PWD/main.py:/app/main.py
-      - $PWD/uwsgi.ini:/app/uwsgi.ini
-      - $PWD/setting.py:/app/setting.py
-      - $PWD/cmdtools:/app/cmdtools
-      - $PWD/celery_task:/app/celery_task
-      - $PWD/models:/app/models
-      - $PWD/module:/app/module
-      - $PWD/templates:/app/templates
-      - $PWD/view:/app/view
-      - $PWD/structs:/app/structs
-    depends_on:
-      - memcached-prod
-      - queue_sender
-      - secretary_mongo
-    environment:
-      - C_FORCE_ROOT=true
-      - CLIENT_ID=${CLIENT_ID}
-      - CLIENT_SECRET=${CLIENT_SECRET}
-    networks:
-      - backend
-    entrypoint:
-      [
-        "poetry",
-        "run",
-        "celery",
-        "-A",
-        "celery_task.celery_main",
-        "worker",
-        "-B",
-        "-l",
-        "info",
-        "-O",
-        "fair",
-        "-c",
-        "4",
-        "--logfile",
-        "/var/log/workers/log.log",
-      ]
+  # celery_worker:
+  #   image: "coscupweb-base:24.04.25"
+  #   links:
+  #     - "queue_sender:rabbitmq"
+  #     - "secretary_mongo:mongo"
+  #   volumes:
+  #     - $PWD/logs/workers:/var/log/workers
+  #     - $PWD/main.py:/app/main.py
+  #     - $PWD/uwsgi.ini:/app/uwsgi.ini
+  #     - $PWD/setting.py:/app/setting.py
+  #     - $PWD/cmdtools:/app/cmdtools
+  #     - $PWD/celery_task:/app/celery_task
+  #     - $PWD/models:/app/models
+  #     - $PWD/module:/app/module
+  #     - $PWD/templates:/app/templates
+  #     - $PWD/view:/app/view
+  #     - $PWD/structs:/app/structs
+  #   depends_on:
+  #     - memcached-prod
+  #     - queue_sender
+  #     - secretary_mongo
+  #   environment:
+  #     - C_FORCE_ROOT=true
+  #     - CLIENT_ID=${CLIENT_ID}
+  #     - CLIENT_SECRET=${CLIENT_SECRET}
+  #   networks:
+  #     - backend
+  #   entrypoint:
+  #     [
+  #       "poetry",
+  #       "run",
+  #       "celery",
+  #       "-A",
+  #       "celery_task.celery_main",
+  #       "worker",
+  #       "-B",
+  #       "-l",
+  #       "info",
+  #       "-O",
+  #       "fair",
+  #       "-c",
+  #       "4",
+  #       "--logfile",
+  #       "/var/log/workers/log.log",
+  #     ]
 
-  docs:
-    image: "coscupweb-base:24.04.25"
-    links:
-      - "memcached-prod:memcached"
-      - "queue_sender:rabbitmq"
-      - "secretary_mongo:mongo"
-    volumes:
-      - $PWD/logs/apps:/var/log/apps
-      - $PWD/main.py:/app/main.py
-      - $PWD/uwsgi.ini:/app/uwsgi.ini
-      - $PWD/setting.py:/app/setting.py
-      - $PWD/cmdtools:/app/cmdtools
-      - $PWD/celery_task:/app/celery_task
-      - $PWD/models:/app/models
-      - $PWD/module:/app/module
-      - $PWD/templates:/app/templates
-      - $PWD/view:/app/view
-      - $PWD/structs:/app/structs
-      - $PWD/api:/app/api
-      - $PWD/docs_dev:/app/docs_dev
-    depends_on:
-      - memcached-prod
-      - queue_sender
-      - secretary_mongo
-    expose:
-      - "80"
-    deploy:
-      replicas: 1
-    environment:
-      - PYTHONPATH=../
-      - CLIENT_ID=${CLIENT_ID}
-      - CLIENT_SECRET=${CLIENT_SECRET}
-    networks:
-      - backend
-    working_dir: /app/docs_dev
-    entrypoint: ["./entrypoint.sh", "poetry", "run", "mkdocs", "build"]
+  # docs:
+  #   image: "coscupweb-base:24.04.25"
+  #   links:
+  #     - "memcached-prod:memcached"
+  #     - "queue_sender:rabbitmq"
+  #     - "secretary_mongo:mongo"
+  #   volumes:
+  #     - $PWD/logs/apps:/var/log/apps
+  #     - $PWD/main.py:/app/main.py
+  #     - $PWD/uwsgi.ini:/app/uwsgi.ini
+  #     - $PWD/setting.py:/app/setting.py
+  #     - $PWD/cmdtools:/app/cmdtools
+  #     - $PWD/celery_task:/app/celery_task
+  #     - $PWD/models:/app/models
+  #     - $PWD/module:/app/module
+  #     - $PWD/templates:/app/templates
+  #     - $PWD/view:/app/view
+  #     - $PWD/structs:/app/structs
+  #     - $PWD/api:/app/api
+  #     - $PWD/docs_dev:/app/docs_dev
+  #   depends_on:
+  #     - memcached-prod
+  #     - queue_sender
+  #     - secretary_mongo
+  #   expose:
+  #     - "80"
+  #   deploy:
+  #     replicas: 1
+  #   environment:
+  #     - PYTHONPATH=../
+  #     - CLIENT_ID=${CLIENT_ID}
+  #     - CLIENT_SECRET=${CLIENT_SECRET}
+  #   networks:
+  #     - backend
+  #   working_dir: /app/docs_dev
+  #   entrypoint: ["./entrypoint.sh", "poetry", "run", "mkdocs", "build"]
 
-  memcached-prod:
-    image: "memcached:1.6.22-alpine"
-    deploy:
-      replicas: 1
-    networks:
-      - backend
+  # memcached-prod:
+  #   image: "memcached:1.6.22-alpine"
+  #   deploy:
+  #     replicas: 1
+  #   networks:
+  #     - backend
 
-  queue_sender:
-    image: "rabbitmq:3.11.27-management-alpine"
-    deploy:
-      replicas: 1
-    depends_on:
-      - secretary_mongo
-    networks:
-      - backend
-    volumes:
-      - rabbitdata:/var/lib/rabbitmq
+  # queue_sender:
+  #   image: "rabbitmq:3.11.27-management-alpine"
+  #   deploy:
+  #     replicas: 1
+  #   depends_on:
+  #     - secretary_mongo
+  #   networks:
+  #     - backend
+  #   volumes:
+  #     - rabbitdata:/var/lib/rabbitmq
 
   secretary_mongo:
     image: "mongo:6.0.12-jammy"
@@ -298,4 +298,4 @@ volumes:
   mongoconfig: {}
   linkmongodb: {}
   linkmongoconfig: {}
-  rabbitdata: {}
+  # rabbitdata: {}
