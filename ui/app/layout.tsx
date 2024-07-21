@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter, Yanone_Kaffeesatz } from "next/font/google";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeaderPadding from "@/components/HeaderPadding";
 import "./globals.css";
@@ -85,6 +86,8 @@ export default function RootLayout({
         <Header className="tw-fixed tw-top-0 tw-z-10" />
         <HeaderPadding />
         <main className="tw-grow">{children}</main>
+        <Footer />
+        <div id="portal" />
       </body>
     </html>
   );
