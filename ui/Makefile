@@ -1,5 +1,4 @@
 YARN?=yarn
-PELICANOPTS=-t mytheme
 
 BASEDIR=$(CURDIR)
 OUTPUTDIR=output
