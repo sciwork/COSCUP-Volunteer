@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter, Yanone_Kaffeesatz } from "next/font/google";
 import Header from "@/components/Header";
 import HeaderPadding from "@/components/HeaderPadding";
+import { CounterStoreProvider } from '@/providers/counter-store-provider'
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -84,7 +86,9 @@ export default function RootLayout({
       >
         <Header className="tw-fixed tw-top-0 tw-z-10" />
         <HeaderPadding />
-        <main className="tw-grow">{children}</main>
+        <CounterStoreProvider>
+          <main className="tw-grow">{children}</main>
+        </CounterStoreProvider>
       </body>
     </html>
   );
